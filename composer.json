@@ -1,0 +1,18 @@
+{
+    "autoload": {
+        "psr-4": {
+            "app\\":"app/",
+            "database\\":"database/",
+            "admin\\app\\":"admin/app"
+        },
+        "files": [
+            "config/app.php",
+            "config/const.php",
+            "config/database.php",
+            "helpers/helper.php"
+        ]
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    }
+}
