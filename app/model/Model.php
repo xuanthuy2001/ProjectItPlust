@@ -50,8 +50,8 @@
             }
             $stmt= $this->db->prepare($sql);
             if($stmt){
-                $stmt->bindParam(':status',$status);
-                $stmt->bindParam(':min',$min);
+                $stmt->bindParam(':status',$status, PDO::PARAM_INT);
+                $stmt->bindParam(':min',$min, PDO::PARAM_INT);
                 if(!empty($key)) {
                     $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
                 }
@@ -65,5 +65,43 @@
                 }
             }
             return $datas ;
+        }
+        public function getDanhMuc()
+        {
+            $datas= [];
+            $status = ACTIVE_STATUS;
+            $sql = "SELECT `danh-muc`.`id`,`danh-muc`.`name` , COUNT(`dm-sp`.`id_sp`) AS `sl_sp` FROM `danh-muc` 
+            LEFT JOIN 
+            `dm-sp`
+            ON `danh-muc`.`id` = `dm-sp`.`id_dm`
+            GROUP BY `danh-muc`.`id`,`danh-muc`.`name`";
+            $stmt = $this->db->prepare($sql);
+            if($stmt){
+                $stmt->bindParam(':status',$status,PDO::PARAM_INT);
+                if($stmt->execute()){
+                    $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                $stmt->closeCursor();
+            }
+            return $datas;
+        }
+        public function listNCC()
+        {
+            $datas= [];
+            $status = ACTIVE_STATUS;
+            $sql = "SELECT `danh-muc`.`id`,`danh-muc`.`name` , COUNT(`dm-sp`.`id_sp`) AS `sl_sp` FROM `danh-muc` 
+            LEFT JOIN 
+            `dm-sp`
+            ON `danh-muc`.`id` = `dm-sp`.`id_dm`
+            GROUP BY `danh-muc`.`id`,`danh-muc`.`name`";
+            $stmt = $this->db->prepare($sql);
+            if($stmt){
+                $stmt->bindParam(':status',$status,PDO::PARAM_INT);
+                if($stmt->execute()){
+                    $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                $stmt->closeCursor();
+            }
+            return $datas;
         }
     }

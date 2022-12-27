@@ -1,5 +1,6 @@
 <?php  
     namespace app\controller;
+
     use app\controller\Controller;
     use app\libs\Pagination;
     use app\model\Model;
@@ -29,9 +30,10 @@
             $start = $paging['start'] ?? 0;
             $limit = $paging['limit'] ?? self::LIMIT_ROWS; 
             $htmlPage = $paging['htmlPage'];
-           
             $dataSP = $this->model->getAllDataSpByPaging($start, $limit, $keyword);
-           
+            $listDanhMuc = $this->model->getDanhMuc();
+          
+            $listNCC = $this->model->listNCC();
             $this->loadHeader([
                 'title'=>"trang chu"
             ]);
@@ -40,7 +42,8 @@
                 'keyword' => $keyword,
                 'htmlPage' => $htmlPage,
                 'limit' => $limit,
-                'totalItems'=>$totalItems
+                'totalItems'=>$totalItems,
+                'listDanhMuc'=>$listDanhMuc
             ]);
             $this->loadFooter();
         }
