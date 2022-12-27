@@ -39,7 +39,15 @@
                         <label for="name" class="form-label ">Nhà cung cấp (*)</label>
                         <select name="ncc[]" style="width: 100%;" multiple class="form-select" >
                                 <?php  foreach($dsNcc as $item => $value): ?>
-                                    <option selected value="<?=  $value['id'] ?>"><?=  $value["name"] ?></option>
+                                    <option  value="<?= $value['id'] ?>"><?=  $value["name"] ?></option>
+                                <?php  endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="name" class="form-label ">Sản phẩm thuộc danh mục (*)</label>
+                        <select name="dm[]" style="width: 100%;" multiple class="form-select" >
+                                <?php  foreach($dsDanh_muc as $item => $value): ?>
+                                    <option  value="<?=  $value['id'] ?>"><?=  $value["name"] ?></option>
                                 <?php  endforeach; ?>
                         </select>
                     </div>

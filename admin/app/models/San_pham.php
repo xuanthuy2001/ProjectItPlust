@@ -73,7 +73,7 @@
             }
             return $datas ;
         }
-        public function insert($name,$price,$so_luong,$image,$descriptions,$content,$ncc=[]){
+        public function insert($name,$price,$so_luong,$image,$descriptions,$content,$ncc=[],$dm=[]){
             $createdAt = date('Y-m-d H:i:s');
             $flagCheck = false; // insert thanh cong hay ko
             $sql = "INSERT INTO `san-pham`(`name`, `price`,`so_luong`, `image`, `descriptions`, `content`,  `created_at`) VALUES (:name,:price,:so_luong,:image,:descriptions,:content,:created_at)";
@@ -106,6 +106,20 @@
                             }
                         }
                    }
+                   foreach($dm as $val){
+                    $sql_sp_ncc= "INSERT INTO `dm-sp`(`id_sp`, `id_dm`) VALUES (:ma_sp,:ma_dm)";
+                    $stmt2 = $this->db->prepare($sql_sp_ncc);
+                    if($stmt2){
+                        $stmt2->bindParam(':ma_sp',$idNew,PDO::PARAM_INT);
+                        $stmt2->bindParam(':ma_dm',$val,PDO::PARAM_INT);
+                        if($stmt2->execute()){
+                            $flagCheck = true;
+                        }
+                        else{
+                            $flagCheck = false;
+                        }
+                    }
+               }
                 } 
                 return $flagCheck;
             }

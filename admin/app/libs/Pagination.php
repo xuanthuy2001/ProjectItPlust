@@ -3,7 +3,6 @@
     class Pagination{
         const ROOT_PAGE  = 'index.php';
         const LIMIT_PAGE = 2; // so luong data tren 1 trang
-    
             // viet method de tao link phan trang
         public static function createLink($data = [])
         {

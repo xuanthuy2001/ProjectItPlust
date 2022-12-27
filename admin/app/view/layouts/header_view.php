@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?=  $title ?? "admin" ?></title>
+    <title><?=  $title ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?=  asset('admin/vendor/fontawesome-free/css/all.min.css',true ) ?>" rel="stylesheet" type="text/css">
@@ -54,7 +54,7 @@
                 <span>Quản lý sản phẩm</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="<?=  route('san_pham','index') ?>">
+                <a class="nav-link" href="<?=  route('danh_muc','index') ?>">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Quản lý danh mục</span></a>
             </li>
@@ -72,6 +72,11 @@
                 <a class="nav-link" href="<?=  route('san_pham','index') ?>">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Danh sách khách hàng</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?=  route('san_pham','index') ?>">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Danh sách order</span></a>
             </li>
 
 

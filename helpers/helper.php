@@ -52,12 +52,13 @@
         }
     }
     if(!function_exists('validationSpData')){
-        function validationSpData($name,$price,$so_luong,$ncc,$logo)
+        function validationSpData($name,$price,$so_luong,$ncc,$dm,$logo)
         {
             $error = [];
             $error['name'] = empty($name) ? 'Vui long nhap ten sản phẩm' : '';
             $error['price'] = empty($price) ? 'Vui long nhap giá sản phẩm' : '';
             $error['ncc'] = empty($ncc) ? 'Vui long chọn nhà cung cấp' : '';
+            $error['dm'] = empty($dm) ? 'Vui long chon danh muc' : '';
             $error['logo'] = empty($logo) ? 'Vui long chọn ảnh' : '';
             $error['so_luong'] = empty($so_luong) ? 'Vui long nhap so luong' : '';
             return $error;
